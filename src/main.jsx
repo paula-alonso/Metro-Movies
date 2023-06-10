@@ -7,6 +7,7 @@ import { SignupPage } from './Pages/SignupPage/SignupPage.jsx'
 import { ReservarPage } from './Pages/ReservarPage/ReservarPage.jsx'
 import { MovieDetailsPage } from './Pages/MovieDetailsPage/MovieDetailsPage'
 import { ProfilePage } from './Pages/ProfilePage/ProfilePage'
+import { HomePage } from './Pages/HomePage/HomePage'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -18,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/reservar" element={<ReservarPage/>}/>
       <Route path="/details" element={<MovieDetailsPage/>}/>
       <Route path="/profile" element={<ProfilePage/>}/>
+      <Route path='/' element={<HomePage/>}/>
     </Routes>
     </BrowserRouter>
   </React.StrictMode>,
