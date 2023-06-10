@@ -71,6 +71,19 @@ export function ReservarPage() {
                     <th><p className={styles.subtitle2}>4</p></th>
                     </tr>
             </table>
+
+            <div className={styles.columnaAsientos}>
+            <table >
+            
+            <tr><p className={styles.subtitle2}>A</p></tr>
+            <tr><p className={styles.subtitle2}>B</p></tr>
+            <tr><p className={styles.subtitle2}>C</p></tr>
+            <tr><p className={styles.subtitle2}>D</p></tr>
+            
+            </table>
+
+            </div>
+            
             
             <div className={styles.gridAsientos}>
             
