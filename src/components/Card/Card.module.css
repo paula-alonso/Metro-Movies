@@ -1,0 +1,25 @@
+.actoresCard{
+
+    margin: 0 auto;
+    width: 85%;
+    display: flex;
+    align-items: center;
+    background: #DAB6FC;
+    border-radius: 10px;
+       
+}
+
+.actorPhoto{
+    height: 101px;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.autorName{
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+}

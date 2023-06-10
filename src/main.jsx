@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { LoginPage } from './Pages/LoginPage/LoginPage.jsx'
 import { SignupPage } from './Pages/SignupPage/SignupPage.jsx'
 import { ReservarPage } from './Pages/ReservarPage/ReservarPage.jsx'
+import { MovieDetailsPage } from './Pages/MovieDetailsPage/MovieDetailsPage'
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -14,6 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/login" element={<LoginPage/>}/>
       <Route path="/signup" element={<SignupPage/>}/>
       <Route path="/reservar" element={<ReservarPage/>}/>
+      <Route path="/details" element={<MovieDetailsPage/>}/>
     </Routes>
     </BrowserRouter>
   </React.StrictMode>,
