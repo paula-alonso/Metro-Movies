@@ -34,6 +34,7 @@ export function LoginPage() {
             </button>
 
             <button type="button" className={styles.iniciarGoogle}>
+                <img src="https://storage.googleapis.com/support-kms-prod/ZAl1gIwyUsvfwxoW9ns47iJFioHXODBbIkrK" className={styles.google}/>
                 Iniciar sesión con Google
             </button>
 
