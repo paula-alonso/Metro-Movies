@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './MovieDetailsPage.module.css'
+import { Card } from '../../components/Card/Card'
 export function MovieDetailsPage() {
   const {name, img, duracion, idiomas, info} = {name: "Harry Potter y la piedra filosofal",
   img: "https://i.blogs.es/6ad7c1/harry-potter-piedra-filosofal/1366_2000.jpeg", 
@@ -23,10 +24,7 @@ export function MovieDetailsPage() {
         <p className={styles.sinopsisInfo}>{info}</p>
 
         <h4 className={styles.actoresTitle}>Actores</h4>
-        <div className={styles.actoresCard}>
-          <img className={styles.actorPhoto} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC00hA-aMLUqFQ80RjBs13Fgb2faNjpDkAfrzEHIHI&s"/>
-          <h1 className={styles.autorName}>Emma Watson</h1>
-        </div>
+          <Card/>
         
         <div className={styles.buttoms}>
           <button className={styles.reserveButtom}>
