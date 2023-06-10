@@ -47,17 +47,59 @@ export function ReservarPage() {
             </div>
 
             {/* TICKETS FIELD */}
-            <div className={styles.inputTicket} >
+            <div className={styles.inputContainer} >
                 <label htmlFor="tickets">
                     <span>Cantidad de boletos</span>
                 </label>
-                <input type="tickets" name="id" id="tickets" placeholder="Ej. 1"/><button type="submit" className={styles.confirmar} >OK</button>
+                <table>
+                    <tr>
+                    <th><input type="tickets" name="id" id="tickets" placeholder="Ej. 1"/></th>
+                    <th><button type="submit" className={styles.confirmar} >OK</button></th>
+                    </tr>
+                </table>
             </div>
 
         </form>
         </div>
+        <p className={styles.subtitle2}>Asientos disponibles</p>
+        <div className={styles.wrapper2}>
+            <table>
+                    <tr>
+                    <th><p className={styles.subtitle2}>1</p></th>
+                    <th><p className={styles.subtitle2}>2</p></th>
+                    <th><p className={styles.subtitle2}>3</p></th>
+                    <th><p className={styles.subtitle2}>4</p></th>
+                    </tr>
+            </table>
+            
+            <div className={styles.gridAsientos}>
+            
+            <div className={styles.asiento}></div>
+            <div className={styles.asiento}></div>
+            <div className={styles.asiento}></div>
+            <div className={styles.asiento}></div>
+            <div className={styles.asiento}></div>
+            <div className={styles.asiento}></div>
+            <div className={styles.asiento}></div>
+            <div className={styles.asiento}></div>
+            <div className={styles.asiento}></div>
+            <div className={styles.asiento}></div>
+            <div className={styles.asiento}></div>
+            <div className={styles.asiento}></div>
+            <div className={styles.asiento}></div>
+            <div className={styles.asiento}></div>
+            <div className={styles.asiento}></div>
+            <div className={styles.asiento}></div>
+            <div className={styles.asiento}></div>
+            <div className={styles.asiento}></div>
+            <div className={styles.asiento}></div>
+            <div className={styles.asiento}></div>
+            
+            
 
-        <div className={styles.wrapper2}></div>
+            </div>
+
+        </div>
        
             {/* BUTTONS */}
             <button type="submit" className={styles.ingresar}>
