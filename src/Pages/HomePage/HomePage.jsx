@@ -16,7 +16,7 @@ export function HomePage() {
         getGenres();
     }, [])
 
- 
+    console.log(genres)
     const generos = genres.genres
  
   return (
