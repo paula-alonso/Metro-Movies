@@ -1,12 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './MovieDetailsPage.module.css'
 import { Card } from '../../components/Card/Card'
 import { useMovies } from '../../hookes/useMovies'
 
 export function MovieDetailsPage() {
 
-const { movies, getMovies } = useMovies();
-console.log(movies)
   const {name, img, duracion, idiomas, info} = {name: "Harry Potter y la piedra filosofal",
   img: "https://i.blogs.es/6ad7c1/harry-potter-piedra-filosofal/1366_2000.jpeg", 
   duracion: "120 minutos", idiomas: ["español, italiano"], 

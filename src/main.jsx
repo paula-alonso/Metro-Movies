@@ -8,6 +8,7 @@ import { ReservarPage } from './Pages/ReservarPage/ReservarPage.jsx'
 import { MovieDetailsPage } from './Pages/MovieDetailsPage/MovieDetailsPage'
 import { ProfilePage } from './Pages/ProfilePage/ProfilePage'
 import { Slider } from './Pages/Slider/Slider.jsx'
+import { HomePage } from './Pages/HomePage/HomePage'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -20,6 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/details" element={<MovieDetailsPage/>}/>
       <Route path="/profile" element={<ProfilePage/>}/>
       <Route path="/slider" element={<Slider/>}/>
+      <Route path='/' element={<HomePage/>}/>
     </Routes>
     </BrowserRouter>
   </React.StrictMode>,

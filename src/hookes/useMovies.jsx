@@ -1,17 +1,23 @@
-import { FetchMovies } from "../api/TMDb";
+import { FetchMovies, FetchGenres } from "../api/TMDb";
 import { useEffect, useState } from "react";
 
 export function useMovies() {
 
     const [movies, setMovies] = useState([]);
+    const [genres, setGenres] = useState();
     
     const getMovies = async() => {
         const {data} = await FetchMovies();
         setMovies(data.results)
     } 
 
+    const getGenres = async() => {
+        const {data} = await FetchGenres();
+        setGenres(data)
+    }
+
     return{
-        movies, getMovies
+        movies, genres, getMovies, getGenres
     }
      
 }
