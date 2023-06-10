@@ -7,6 +7,8 @@ import { SignupPage } from './Pages/SignupPage/SignupPage.jsx'
 import { ReservarPage } from './Pages/ReservarPage/ReservarPage.jsx'
 import { MovieDetailsPage } from './Pages/MovieDetailsPage/MovieDetailsPage'
 
+import { MovieDetailsPage } from './Pages/MovieDetailsPage/MovieDetailsPage'
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
