@@ -7,7 +7,7 @@ import { SignupPage } from './Pages/SignupPage/SignupPage.jsx'
 import { ReservarPage } from './Pages/ReservarPage/ReservarPage.jsx'
 import { MovieDetailsPage } from './Pages/MovieDetailsPage/MovieDetailsPage'
 import { ProfilePage } from './Pages/ProfilePage/ProfilePage'
-import { Slider } from './Pages/Slider/Slider.jsx'
+import { Slider } from './Pages/Slider/Slider'
 import { HomePage } from './Pages/HomePage/HomePage'
 
 
