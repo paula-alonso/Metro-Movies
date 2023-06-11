@@ -49,5 +49,17 @@ export async function FetchCast(movieId){
   };
   return axios.get(url, options)
 }
+
+export async function FetchUpcomingMovie(){
+  const url4 = "https://api.themoviedb.org/3/movie/upcoming?api_key=434f47eb1b2d5c6b864a3d2591bf1b1d"
+  const options4 = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MzRmNDdlYjFiMmQ1YzZiODY0YTNkMjU5MWJmMWIxZCIsInN1YiI6IjY0ODNmODRhZTM3NWMwMDBlMjRmMDMwMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.iCcgQOMRqU4nhAiM3zFYXp9PNXOnOXG1AQfUaV5uUS8'
+    }
+  };
+  return axios.get(url4, options4)
+}
     
 

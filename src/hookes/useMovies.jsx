@@ -1,4 +1,4 @@
-import { FetchMovies, FetchGenres, FetchMovie, FetchCast } from "../api/TMDb";
+import { FetchMovies, FetchGenres, FetchMovie, FetchCast, FetchUpcomingMovie } from "../api/TMDb";
 import { useEffect, useState } from "react";
 
 export function useMovies() {
@@ -7,11 +7,18 @@ export function useMovies() {
     const [genres, setGenres] = useState([]);
     const [movie, setMovie] = useState([null]);
     const [cast, setCast] = useState([]);
+    const [upmovies, setUpMovie] = useState([]);
+
     
     const getMovies = async() => {
         const {data} = await FetchMovies();
         setMovies(data.results)
     } 
+
+    const getUpcomingMovies = async() => {
+        const {data} = await FetchUpcomingMovie();
+        setUpMovie(data.results);
+    }
 
     const getGenres = async() => {
         const {data} = await FetchGenres();
@@ -21,7 +28,6 @@ export function useMovies() {
     const getSingleMovie = async (movieId)=>{
         const {data} = await FetchMovie(movieId)
         setMovie(data);
-        console.log(data)
     }
 
     const getCast = async (movieId) =>{
@@ -30,7 +36,7 @@ export function useMovies() {
     }
     
     return{
-        movies, genres, movie, cast, getMovies, getGenres, getSingleMovie, getCast
+        movies, genres, movie, cast, getMovies, getGenres, getSingleMovie, getCast, upmovies, getUpcomingMovies
     }
      
 }
