@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styles from '../LoginPage/LoginPage.module.css'
+import { singInWithGoogle } from '../../firebase/auth-service';
 
 export function SignupPage() {
 
     const handleSingWithGoogle = async () => {
-        console.log("Registro con google")
+        await singInWithGoogle()
     };
 
   return (
