@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styles from './MovieDetailsPage.module.css'
 import { Card } from '../../components/Card/Card'
 import { useMovies } from '../../hookes/useMovies'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 export function MovieDetailsPage() {
 
@@ -62,7 +62,7 @@ export function MovieDetailsPage() {
           
         <div className={styles.buttoms}>
           <button className={styles.reserveButtom}>
-            Reservar
+          <Link to={`/reservar/${movieId}`}> Reservar </Link>
           </button>
 
           <button className={styles.favorites}>

@@ -39,13 +39,13 @@ export function HomePage() {
     ];
  
   return (
-    <div className={styles.container}>
+      <div className={styles.container}>
+        <Slider imagenes={imagenes}/>
         <h1 className={styles.cartelera}>
                 En cartelera
             </h1>
         <div className={styles.container}>
         
-    <Slider imagenes={imagenes}/>
 
     <div className={styles.nowplaying}>
             {
