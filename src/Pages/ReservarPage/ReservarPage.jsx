@@ -74,7 +74,7 @@ export function ReservarPage() {
                 <table>
                     <tr>
                     <th><input type="tickets" name="id" id="tickets" placeholder="Ej. 1"/></th>
-                    <th><button type="submit" className={styles.confirmar} >OK</button></th>
+                    <th><button id="ok-button" type="submit" className={styles.confirmar} >OK</button></th>
                     </tr>
                 </table>
             </div>
@@ -82,7 +82,7 @@ export function ReservarPage() {
         </form>
         </div>
         <p className={styles.subtitle2}>Asientos disponibles</p>
-        <div className={styles.wrapper2}>
+        <div id="asientos-container" className={styles.wrapper2}>
             <table>
                     <tr>
                     <th><p className={styles.subtitle2}>1</p></th>
@@ -94,26 +94,7 @@ export function ReservarPage() {
             
             
             <div className={styles.gridAsientos}>
-            
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
+        
             <div className={styles.asiento}></div>
             
             
@@ -126,6 +107,7 @@ export function ReservarPage() {
             <button type="submit" className={styles.ingresar}>
                 Continuar
             </button>
+            <script src="script.js"></script>
     </div>
 
   )
