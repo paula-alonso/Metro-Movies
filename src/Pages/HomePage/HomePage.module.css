@@ -1,8 +1,24 @@
-
+.container{
+    background-color: #12001E;
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
 
 .nowplaying{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+}
+
+.cartelera{
+    padding: 20px;
+    text-align: center;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    color: #FFFFFF
 }
