@@ -8,11 +8,14 @@ export function useMovies() {
     const [movie, setMovie] = useState([null]);
     const [cast, setCast] = useState([]);
     const [upmovies, setUpMovie] = useState([]);
+    const [isLoading, setLoading]=useState(false); 
 
     
     const getMovies = async() => {
+        setLoading(true)
         const {data} = await FetchMovies();
         setMovies(data.results)
+        setLoading(false)
     } 
 
     const getUpcomingMovies = async() => {
@@ -22,7 +25,7 @@ export function useMovies() {
 
     const getGenres = async() => {
         const {data} = await FetchGenres();
-        setGenres(data)
+        setGenres(data.genres)
     }
 
     const getSingleMovie = async (movieId)=>{
@@ -36,7 +39,7 @@ export function useMovies() {
     }
     
     return{
-        movies, genres, movie, cast, getMovies, getGenres, getSingleMovie, getCast, upmovies, getUpcomingMovies
+        movies, genres, movie, cast, getMovies, getGenres, getSingleMovie, getCast, upmovies, getUpcomingMovies, isLoading
     }
      
 }

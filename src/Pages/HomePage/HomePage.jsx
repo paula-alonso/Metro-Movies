@@ -7,7 +7,7 @@ import styles from './HomePage.module.css'
 
 export function HomePage() {
     
-    const { movies, genres, getMovies, getGenres, upmovies, getUpcomingMovies } = useMovies();
+    const { movies, genres, getMovies, getGenres, upmovies, getUpcomingMovies, isLoading } = useMovies();
 
     useEffect(() => {
         getMovies();
@@ -25,10 +25,7 @@ export function HomePage() {
     console.log(upmovies)
 
     let generos = ""
-    try{
-        generos = genres.genres
-    }catch(error){
-    }
+       
     
 
     const imagenes = [
@@ -49,22 +46,29 @@ export function HomePage() {
 
     <div className={styles.nowplaying}>
             {
-                movies.map((movie)=>{
-                    let matches = [];
-                    let ids = movie.genre_ids
-                    ids.map((id)=>{
-                        generos.map((genero) =>{
-                            if(genero.id == id){
-                                matches.push(genero.name)
-                            }
-                        })
-                    })            
+                isLoading?(
+                    <p>Loading...</p>
+                ):(
+                     
+                    movies.map((movie)=>{
+                        let matches = [];
+                        let ids = movie.genre_ids
+                        ids.map((id)=>{
+                            genres.map((genero) =>{
+                                if(genero.id == id){
+                                    matches.push(genero.name)
+                                }
+                            })
+                        })            
+    
+                        matches = matches.toString();
+                        return(
+                            <MovieCard movie={movie} matches={matches}/>
+                        )
+                    })
+                )
 
-                    matches = matches.toString();
-                    return(
-                        <MovieCard movie={movie} matches={matches}/>
-                    )
-                })
+                
             }
             
     </div>
@@ -74,22 +78,26 @@ export function HomePage() {
             <h1 className={styles.cartelera}>Próximamente</h1>
             <div className={styles.nowplaying}>
             {
-                upmovies.map((movie)=>{
-                    let matches = [];
-                    let ids = movie.genre_ids
-                    ids.map((id)=>{
-                        generos.map((genero) =>{
-                            if(genero.id == id){
-                                matches.push(genero.name)
-                            }
-                        })
-                    })            
-
-                    matches = matches.toString();
-                    return(
-                        <MovieCard movie={movie} matches={matches}/>
-                    )
-                })
+                isLoading?(
+                    <p>Loading...</p>
+                ) : (
+                    upmovies.map((movie)=>{
+                        let matches = [];
+                        let ids = movie.genre_ids
+                        ids.map((id)=>{
+                            genres.map((genero) =>{
+                                if(genero.id == id){
+                                    matches.push(genero.name)
+                                }
+                            })
+                        })            
+    
+                        matches = matches.toString();
+                        return(
+                            <MovieCard movie={movie} matches={matches}/>
+                        )
+                    })
+                )               
             } 
             </div>
             

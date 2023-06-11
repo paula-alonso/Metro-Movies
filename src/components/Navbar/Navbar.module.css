@@ -4,10 +4,11 @@
 .navbar {
   background-color: #440070;
   height: 5.5vh;
-  display: grid;
+
   }
 
 .navdiv {
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content:space-between;
@@ -36,7 +37,10 @@
   }
 
   ul{
-    width: 70%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   
   }
   
@@ -69,3 +73,7 @@
   .link{
     all: unset;
   }
+
+.profile{
+  font-size: 12px;
+}
