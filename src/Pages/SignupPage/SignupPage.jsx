@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styles from './SignupPage.module.css'
+import styles from '../LoginPage/LoginPage.module.css'
 
 export function SignupPage() {
   return (
@@ -48,10 +48,10 @@ export function SignupPage() {
 
             
 
-            {/*<Link to ={REGISTER_URL}>
+            {<Link to ={"/login"}>
                 ¿Ya una cuenta? {" "}
                 <span>Inicia sesión</span>
-            </Link>*/}
+            </Link>}
         </form>
     </div>
   )

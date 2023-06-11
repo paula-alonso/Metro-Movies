@@ -1,36 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway:wght@800&display=swap');
+
+
+
+
+body{
+    background-color:#1E1E1E;
+}
+
 .container{
-    background: #F5EAFF;
-    height: 100vh;
-    display: flex;
+    background-color:#1E1E1E;
+    min-height: 100vh;
     justify-content: center;
     align-items: center;
-    position: relative;
     
 }
 
-.container .form{
-    height: 70%;
-    padding: 10%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    
+.cardContainer{
+    padding: 5%;
 }
 
-.container .form .title{
+.container .title{
     text-align: center;
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 800;
-    font-size: 32px;
+    font-size: 25px;
     line-height: 38px;
-    color: #4C0B75;
-    
-    
+    color: #f2f2f2;
+    margin-top: 10%;
+    padding: 5%;
 }
 
 .container .form .subtitle{
@@ -40,6 +38,16 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
+
+}
+.container .subtitle2{
+    text-align: center;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #FFFFFF;
 
 }
 
@@ -53,6 +61,7 @@
 }
 
 
+
 input{
     width: 94%;
     height: 55px;
@@ -60,10 +69,40 @@ input{
     border: 2px solid #4C0B75;
     border-radius: 8px;
     padding-left: 5%;
+    margin-top:5%;
+    margin-bottom: 5%;
 }
 
 
 .ingresar{
+    all: unset;
+    width: 70%;
+    height: 55px;
+    background: #593073;
+    border-radius: 8px;
+    font-family: 'Raleway';
+    font-style: normal;
+    text-align: center;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    margin:auto;
+    margin-top: 5%;
+    display: block;
+
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    text-align: left;
+    padding: 8px;
+  }
+
+.confirmar{
     all: unset;
     width: 100%;
     height: 55px;
@@ -76,8 +115,8 @@ input{
     font-size: 16px;
     line-height: 19px;
     color: #FFFFFF;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    
+    
 }
 
 .iniciarGoogle{
@@ -96,10 +135,25 @@ input{
 }
 
 .image{
-    display: inline-block;
-    margin-inline-end: 5%;
+    border-radius: 8px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    
 }
 
 
-
-
+.wrapper{
+    box-sizing: border-box;
+    padding:5%;
+    background-color: #DAB6FC;
+    gap: 5%;
+    position: relative;
+    border-radius: 8px;
+    width: 70%;
+    height: auto;
+    margin:auto;
+    margin-top: 15%;
+    overflow: hidden;
+    display: flex;
+    
+}

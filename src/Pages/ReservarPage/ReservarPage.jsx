@@ -1,8 +1,28 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, {useEffect} from 'react'
 import styles from './ReservarPage.module.css'
+import { useMovies } from '../../hookes/useMovies'
+import { Link, useParams } from 'react-router-dom'
 
 export function ReservarPage() {
+
+    const {movieId} = useParams();
+    const { movie, getSingleMovie, cast, getCast } = useMovies();
+
+    useEffect(() => {
+        getSingleMovie(movieId);
+        
+      }, [])
+    
+      useEffect(()=>{
+        getCast(movieId)
+      }, [])
+    
+      console.log(cast)
+    
+      console.log(movie);
+      const {title, spoken_languages, overview, poster_path, runtime } = movie || {};
+      let languages = [];
+
   return (
    
     <div className={styles.container}>
@@ -13,12 +33,12 @@ export function ReservarPage() {
 
             
             
-            <h1 className={styles.title}>Harry Potter y la piedra filosofal</h1>
+            <h1 className={styles.title}> {title} </h1>
             <p className={styles.subtitle}>
             ¡Completa tu reserva!
             </p>
 
-            <img className={styles.image} src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2019/12/harry-potter-piedra-filosofal.jpg?tf=3840x" width={"90%"}/>
+            <img className={styles.image} src={`https://image.tmdb.org/t/p/w500${poster_path}`} width={"90%"}/>
 
             {/* NAME FIELD */}
             <div className={styles.inputContainer}>
@@ -71,6 +91,7 @@ export function ReservarPage() {
                     <th><p className={styles.subtitle2}>4</p></th>
                     </tr>
             </table>
+            
             
             <div className={styles.gridAsientos}>
             
