@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway:wght@800&display=swap');
 
 
-*{
-    position: relative;
-}
+
 
 body{
     background-color:#1E1E1E;
@@ -17,22 +15,20 @@ body{
     
 }
 
-.container .form{
-    height: 70%;
-    padding: 10%;
-    align-items: center;
-    justify-content: space-evenly;
-    
+.cardContainer{
+    padding: 5%;
 }
 
-.container .form .title{
+.container .title{
     text-align: center;
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 800;
     font-size: 25px;
     line-height: 38px;
-    color: #4C0B75;
+    color: #f2f2f2;
+    margin-top: 10%;
+    padding: 5%;
 }
 
 .container .form .subtitle{
@@ -145,26 +141,6 @@ table {
     
 }
 
-.asiento{
-    
-    background-color: #DAB6FC;
-    width:70%;
-    height: 4.25em;
-    cursor: pointer;
-    background: url('src/assets/Logo/asiento1.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-
-
-
-}
-
-.asiento:hover{
-    background: url('src/assets/Logo/asiento2.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
 
 .wrapper{
     box-sizing: border-box;
@@ -180,37 +156,4 @@ table {
     overflow: hidden;
     display: flex;
     
-}
-
-.hide {
-    display: none;
-  }
-
-.wrapper2{
-    box-sizing: border-box;
-    padding:5%;
-    background-color: #4C0B75;
-    gap: 5%;
-    position: relative;
-    border-radius: 8px;
-    width: 70%;
-    height: auto;
-    margin:auto;
-    overflow: hidden;
-    
-}
-
-.gridAsientos {
-    position:relative;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    gap: 0.3em;
-
-  }
-
-.columnaAsientos {
-    float: left;
-    display: flex;
-
 }

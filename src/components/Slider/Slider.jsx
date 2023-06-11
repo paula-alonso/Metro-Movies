@@ -1,17 +1,20 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Slider.module.css'
 
-export function Slider() {
-    const imagenes = [
-        'https://picsum.photos/id/1020/400',
-        'https://picsum.photos/id/1010/400',
-        'https://picsum.photos/id/1015/400'
+
+export function Slider({imagenes}) {
     
-    ];
     const cantidad = imagenes?.length;
     const [imagenActual, setImagenActual] = React.
     useState(0);
+
+    useEffect(()=>{
+        const interval = setInterval(()=>{
+            siguienteImagen();},3000);
+        return () => clearInterval(interval);
+    });
+    
 
     const siguienteImagen = () => {
         setImagenActual(imagenActual=== cantidad - 1? 
@@ -25,22 +28,20 @@ export function Slider() {
 
     return (
         <div className={styles.container}>
-            <button onClick={anteriorImagen}>←</button>
-            <div className={styles.imagenes}>
-        
+
             {imagenes.map((imagen, indice) => {
                 return (
                     <div className={imagenActual===indice? `${styles.slide} ${styles.active}`: styles.slide}>
-                        
+                    <button className={styles.sliderButtonL} onClick={anteriorImagen}>←</button>
+                    <button className={styles.sliderButtonR} onClick={siguienteImagen}>→</button>   
                         {imagenActual=== indice &&(
-                        <img key={indice} src={imagen}
+                        <img className={styles.sliderImg} key={indice} src={imagen}
                         alt="imagen"/>
                     )} 
                     </div>
                 ); 
             })}
-            </div>
-        <button onClick={siguienteImagen}>→</button>
+           
         </div>
 
 );

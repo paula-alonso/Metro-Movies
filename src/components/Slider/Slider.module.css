@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway:wght@800&display=swap');
+
+
+
+
+.container{
+  width: 100vw;
+  height: 20vh;
+  justify-content: center;
+  align-items: center;
+  overflow:hidden;
+  margin-bottom: 5%;
+  
+}
+
+
+.slide{
+
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+
+}
+
+.sliderButtonL {
+  background: none;
+  border: none;
+  background-color: #430070;
+  opacity: 0.5;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: large;
+  cursor: pointer;
+  color: #ffffff;
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  margin-top: 15%;
+  left: 10px;
+  
+}
+
+.sliderButtonR {
+  background: none;
+  border: none;
+  background-color: #440070;
+  opacity: 0.5;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: large;
+  cursor: pointer;
+  color: #ffffff;
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  margin-top: 15%;
+  right: 10px;
+  
+}
+
+.sliderButtonL:hover {opacity: 1;}
+.sliderButtonR:hover {opacity: 1;}
+
+.slide.active{
+
+  opacity: 1;
+
+}
+
+.sliderImg{
+  object-fit: cover;
+}
