@@ -1,8 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styles from './LoginPage.module.css'
+import {singInWithGoogle } from '../../firebase/auth-service';
 
 export function LoginPage() {
+
+    const handleSignInWithGoogle = async () => {
+        await singInWithGoogle()
+    };
+
   return (
     <div className={styles.container}>
         <form className={styles.form}>
@@ -33,7 +39,7 @@ export function LoginPage() {
                 Iniciar sesión
             </button>
 
-            <button type="button" className={styles.iniciarGoogle}>
+            <button type="button" className={styles.iniciarGoogle} onClick={singInWithGoogle}>
                 <img src="https://storage.googleapis.com/support-kms-prod/ZAl1gIwyUsvfwxoW9ns47iJFioHXODBbIkrK" className={styles.google}/>
                 Iniciar sesión con Google
             </button>

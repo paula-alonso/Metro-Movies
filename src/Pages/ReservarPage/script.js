@@ -1,147 +1,81 @@
-//Data
-const score = document.getElementById("score");
-const timeValue = document.getElementById("time");
-const username = document.getElementById("user");
+const container = document.querySelector('.asientos-container');
+const seats = document.querySelectorAll('.row .seat:not(.occupied');
+const count = document.getElementById('count');
+const total = document.getElementById('total');
+const movieSelect = document.getElementById('movie');
+const okButton = document.getElementById('ok-button');
 
-//Buttons
-const okButton = document.getElementById("ok-button");
+populateUI();
+let ticketPrice = +movieSelect.value;
 
-//Displayed elements
-const asientosContainer = document.querySelector(".asientos-container");
+// Save selected movie index and price
+function setMovieData(movieIndex, moviePrice) {
+  localStorage.setItem('selectedMovieIndex', movieIndex);
+  localStorage.setItem('selectedMoviePrice', moviePrice);
+}
 
-let asientos;
-let selected = false;
-let secondasiento = false;
-let local = localStorage;
+// update total and count
+function updateSelectedCount() {
+  const selectedSeats = document.querySelectorAll('.row .seat.selected');
 
-let asientoValues = [];
+  const seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
 
+  localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
 
-const matrixGenerator = (size = 20) => {
-  asientosContainer.innerHTML = "";
-  
-  for (let i = 0; i < size; i++) {
-    /*
-        Create asientos
-        before => front side (contains unimet's logo)
-        after => back side (contains image related to the unimet)
-      */
-    asientosContainer.innerHTML += `
-     <div className={styles.asiento}" id="${i}"></div>
-     `;
-  }
-  
-  //asientos
-  asientos = document.querySelectorAll(".asiento-container");
-  asientos.forEach((asiento) => {
-    asiento.addEventListener("click", () => {
-        if (remainingTime != 0 && started==true && flip) { //If time is not over, the user already clicked 'start playing' and there aren't more than 2 asientos shown
-        
-        //If selected asiento is not matched yet 
-        if (!asiento.classList.contains("matched")) {
-        //flip the clicked asiento
-        asiento.classList.add("flipped");
-        //if it is the firstasiento 
-        if (!firstasiento) {
-          //current asiento will become firstasiento
-          firstasiento = asiento;
-          //current asientos value becomes firstasientoValue
-          firstasientoValue = asiento.getAttribute("data-asiento-value");
-        } else {
-         
-          //secondasiento and value
-          flip = false; // if the second asiento is selected, the user can't flip another one
-          secondasiento = asiento;
-          let secondasientoValue = asiento.getAttribute("data-asiento-value");
-          if (firstasientoValue == secondasientoValue) {
-            //if both asientos match add matched class so these asientos would beignored next time
-            firstasiento.classList.add("matched");
-            secondasiento.classList.add("matched");
-            flip = true;
-            //set firstasiento to false since next asiento would be first now
-            firstasiento = false;
-            //winCount increments as user found a correct match
-            winCount += 1;
-            //check if winCount ==half of asientoValues
-            if (winCount == Math.floor(asientoValues.length / 2)) {
+  //copy selected seats into arr
+  // map through array
+  //return new array of indexes
 
-                scoreCalculator();
+  const selectedSeatsCount = selectedSeats.length;
 
+  count.innerText = selectedSeatsCount;
+  total.innerText = selectedSeatsCount * ticketPrice;
+}
 
-                won.classList.remove("hide");
-                showButton.classList.remove('hide');
-                clearInterval(interval);
-
-
-                setData(username.value, scoreCalc);
-                
-
-              
-            }
-          } else {
-            //if the asientos dont match
-            //flip the asientos back to normal
-            let [tempFirst, tempSecond] = [firstasiento, secondasiento];
-            firstasiento = false;
-            secondasiento = false;
-            let delay = setTimeout(() => {
-              tempFirst.classList.remove("flipped");
-              tempSecond.classList.remove("flipped");
-              flip=true; //if both asientos are hidden, the user can flip asientos again
-            }, 900);
-          }
-        }
+// get data from localstorage and populate ui
+function populateUI() {
+  const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'));
+  if (selectedSeats !== null && selectedSeats.length > 0) {
+    seats.forEach((seat, index) => {
+      if (selectedSeats.indexOf(index) > -1) {
+        seat.classList.add('selected');
       }
-    }});
-  });
-};
+    });
+  }
 
+  const selectedMovieIndex = localStorage.getItem('selectedMovieIndex');
 
+  if (selectedMovieIndex !== null) {
+    movieSelect.selectedIndex = selectedMovieIndex;
+  }
+}
 
-
-
-//Creates the score table
-
- 
-
-//Start game
-startButton.addEventListener("click", () => { 
-    if (username.value!="") {
-        started = true;
-        header.innerHTML = `<p style="display:inline">Welcome,   ${username.value}`;
-        
-        //Initial values
-        scoreCalc = 1000;
-        seconds = 0;
-        minutes = 3;
-    
-        //Start timer
-        interval = setInterval(timeGenerator, 1000);
-        //initial score
-        score.innerHTML = `<span>Score:</span> ${scoreCalc}`;
-        changeButton.classList.remove("hide");
-        restartButton.classList.remove("hide");
-        
-    } else {
-      window.alert("Please enter your username");
-    }
+// Movie select event
+movieSelect.addEventListener('change', (e) => {
+  ticketPrice = +e.target.value;
+  setMovieData(e.target.selectedIndex, e.target.value);
+  updateSelectedCount();
 });
 
+// Seat click event
+container.addEventListener('click', (e) => {
+   
+        if (e.classList.contains(`${styles.asiento}`) && !e.classList.contains(`${styles.occupied}`)) {
+          e.classList.toggle(`${styles.selected}`);
+        }
 
+        if (e.currentTarget.classList.contains(`${styles.asiento}`) && !e.currentTarget.classList.contains(`${styles.selected}`)) {
+            e.currentTarget.classList.remove(`${styles.selected}`);
+          }
 
-changeButton.addEventListener("click", () => { 
-    
-    changeButton.classList.add("hide");
-    restartButton.classList.add("hide");
-    header.innerHTML =`<form id="form"> Please enter your username:
-    
-    <input id="user" name="username" placeholder="Username..."/>  
-    <button class="button" id="start" >Start playing</button>
+      
+});
+okButton.addEventListener('click', () => {
+   
+    container.classList.toggle(`${styles.hide}`)
 
-  </form>`
-
+  
 });
 
-
-
-matrixGenerator();
+// intial count and total
+updateSelectedCount();

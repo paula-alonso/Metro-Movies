@@ -4,9 +4,50 @@ import { useMovies } from '../../hookes/useMovies'
 import { Link, useParams } from 'react-router-dom'
 
 export function ReservarPage() {
+    let selectCount=0;
+
+    const asientos = [];
+
+    const handleClick = (event) => {
+        
+
+        if (event.currentTarget.classList.contains(`${styles.asiento}`) && !event.currentTarget.classList.contains(`${styles.occupied}`) && !event.currentTarget.classList.contains(`${styles.selected}`)) {
+          if (selectCount < 5) {
+            event.currentTarget.classList.toggle(`${styles.selected}`);
+          selectCount += 1;
+          console.log(selectCount)
+          } else {window.alert("Ha alcanzado el máximo de asientos");}
+        }
+
+        else if (event.currentTarget.classList.contains(`${styles.asiento}`)  && !event.currentTarget.classList.contains(`${styles.occupied}`) && event.currentTarget.classList.contains(`${styles.selected}`)) {
+            event.currentTarget.classList.remove(`${styles.selected}`);
+            selectCount -= 1;
+            console.log(selectCount)
+          }
+      };
+
+      for (let i = 0; i < 20; i++) {
+        asientos.push(<div className={styles.asiento} id={i} onClick={handleClick} ></div>);
+    }
+    
+      const confirmClick = (a,event) => {
+       event.a.classList.remove(`${styles.hide}`);
+
+      };
+
+      const continueClick = event => {
+        if (event.currentTarget.classList.contains(`${styles.asiento}`) && !event.currentTarget.classList.contains(`${styles.occupied}`)) {
+          event.currentTarget.classList.toggle(`${styles.selected}`);
+        }
+
+        if (event.currentTarget.classList.contains(`${styles.asiento}`) && !event.currentTarget.classList.contains(`${styles.selected}`)) {
+            event.currentTarget.classList.remove(`${styles.selected}`);
+          }
+      };
 
     const {movieId} = useParams();
     const { movie, getSingleMovie, cast, getCast } = useMovies();
+    
 
     useEffect(() => {
         getSingleMovie(movieId);
@@ -73,7 +114,7 @@ export function ReservarPage() {
                 </label>
                 <table>
                     <tr>
-                    <th><input type="tickets" name="id" id="tickets" placeholder="Ej. 1"/></th>
+                    <th><input type="tickets" name="tickets" id="tickets" placeholder="Ej. 1"/></th>
                     <th><button id="ok-button" type="submit" className={styles.confirmar} >OK</button></th>
                     </tr>
                 </table>
@@ -93,9 +134,11 @@ export function ReservarPage() {
             </table>
             
             
-            <div className={styles.gridAsientos}>
-        
-            <div className={styles.asiento}></div>
+            <div className={styles.gridAsientos} >
+
+
+                {asientos}    
+             
             
             
 
@@ -107,7 +150,7 @@ export function ReservarPage() {
             <button type="submit" className={styles.ingresar}>
                 Continuar
             </button>
-            <script src="script.js"></script>
+            {/* <script src="script.js"></script> */}
     </div>
 
   )

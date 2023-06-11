@@ -159,6 +159,11 @@ table {
 
 
 }
+.asiento.selected {
+    background: url('src/assets/Logo/asiento2.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
 
 .asiento:hover{
     background: url('src/assets/Logo/asiento2.png');
