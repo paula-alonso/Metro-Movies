@@ -3,7 +3,8 @@
 
 .navbar {
   background-color: #440070;
-
+  height: 5.5vh;
+  display: grid;
   }
 
 .navdiv {
@@ -61,8 +62,10 @@
   }
 
   .logo{
-    width: 5vh;
-    height: 5vh;
+    height: 30px;
     padding-left: 2.5%;
   }
  
+  .link{
+    all: unset;
+  }

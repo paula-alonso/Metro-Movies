@@ -1,19 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway:wght@800&display=swap');
 .container{
     background: #F5EAFF;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .container .form{
-    height: 80%;
+
     padding: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    row-gap: 5px;
     
 }
 
@@ -28,6 +29,8 @@
 }
 
 .container .form .subtitle{
+    color: black;
+    padding: 0;
     text-align: center;
     font-family: 'Montserrat';
     font-style: normal;

@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom'
 import styles from '../LoginPage/LoginPage.module.css'
 
 export function SignupPage() {
+
+    const handleSingWithGoogle = async () => {
+        console.log("Registro con google")
+    };
+
   return (
     <div className={styles.container}>
         <form className={styles.form}>
@@ -41,7 +46,7 @@ export function SignupPage() {
                 Registrarse
             </button>
 
-            <button  type="button" className={styles.iniciarGoogle}>
+            <button  type="button" className={styles.iniciarGoogle} onClick={handleSingWithGoogle}>
                 <img className={styles.image} src="src/assets/Logo/google.png" height={"35%"}/>
                 Registrarse con Google
             </button>
