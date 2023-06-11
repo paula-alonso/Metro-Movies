@@ -24,6 +24,8 @@
     color: #000000;
 }
 
+
+
 .movieInfo{
     margin-top: 4%;
     word-wrap: break-word;
@@ -41,4 +43,12 @@
     text-align: center;
     width: 90%;
     height: 30%;
+}
+
+.linkPage{
+    all: unset;
+}
+
+.linkPage:hover{
+    color: chocolate;
 }

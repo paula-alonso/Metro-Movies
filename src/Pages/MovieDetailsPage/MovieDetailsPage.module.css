@@ -74,31 +74,15 @@
 
 }
 
-.actoresCard{
-
-    margin: 0 auto;
-    width: 85%;
+.actorsContainer{
+    height: 400px;
     display: flex;
-    align-items: center;
-    background: #DAB6FC;
-    border-radius: 10px;
-       
+    flex-wrap: wrap;
+    gap: 20px;
+    overflow-y: scroll;
 }
 
-.actorPhoto{
-    height: 101px;
-    border-radius: 10px;
-    padding: 12px;
-}
 
-.autorName{
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 23px;
-    color: #000000;
-}
 
 .buttoms{
     

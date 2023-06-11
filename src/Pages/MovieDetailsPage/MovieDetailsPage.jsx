@@ -2,33 +2,64 @@ import React, { useEffect } from 'react'
 import styles from './MovieDetailsPage.module.css'
 import { Card } from '../../components/Card/Card'
 import { useMovies } from '../../hookes/useMovies'
+import { useParams } from 'react-router-dom'
 
 export function MovieDetailsPage() {
 
-  const {name, img, duracion, idiomas, info} = {name: "Harry Potter y la piedra filosofal",
-  img: "https://i.blogs.es/6ad7c1/harry-potter-piedra-filosofal/1366_2000.jpeg", 
-  duracion: "120 minutos", idiomas: ["español, italiano"], 
-  info: "El día de su cumpleaños, Harry Potter descubre que es hijo de dos conocidos hechiceros, de los que ha heredado poderes mágicos. Debe asistir a una famosa escuela de magia y hechicería, donde entabla una amistad con dos jóvenes que se convertirán en sus compañeros de aventura. Durante su primer año en Hogwarts, descubre que un malévolo y poderoso mago llamado Voldemort está en busca de una piedra filosofal que alarga la vida de quien la posee.El día de su cumpleaños, Harry Potter descubre que es hijo de dos conocidos hechiceros, "
-}
+  const {movieId} = useParams();
+  const { movie, getSingleMovie, cast, getCast } = useMovies();
+ 
+
+  useEffect(() => {
+    getSingleMovie(movieId);
+    
+  }, [])
+
+  useEffect(()=>{
+    getCast(movieId)
+  }, [])
+
+  console.log(cast)
+
+  console.log(movie);
+  const {title, spoken_languages, overview, poster_path, runtime } = movie || {};
+  let languages = [];
+  try{
+   
+    spoken_languages.map((lan) => {
+      languages.push(lan.name)
+    })
+
+    languages = languages.toString();
+  }catch(error){
+    
+  }
+  
   return (
 
     <div className={styles.container}>
-      <img src={img} className={styles.hero}/>
+      <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} className={styles.hero}/>
 
       <div className={styles.peliContainer}>
-        <h1 className={styles.title}>{name}</h1>
+        <h1 className={styles.title}>{title}</h1>
 
         <div className={styles.info1Container}>
-          <p>Duración: {duracion}</p>
-          <p>Idiomas: español, italiano, francés</p>
+          <p>Duración: {runtime} mins</p>
+          <p>Idiomas: {languages}</p>
         </div>
 
         <h3 className={styles.sinopsis}>Sinopsis</h3>
-        <p className={styles.sinopsisInfo}>{info}</p>
+        <p className={styles.sinopsisInfo}>{overview}</p>
 
         <h4 className={styles.actoresTitle}>Actores</h4>
-          <Card/>
-        
+        <div className={styles.actorsContainer}>
+          {cast.map((person)=>{
+              if(person.known_for_department == 'Acting'){
+                return <Card person={person}/>
+              }
+            })}
+        </div>
+          
         <div className={styles.buttoms}>
           <button className={styles.reserveButtom}>
             Reservar
