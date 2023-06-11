@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 export async function FetchMovies() {
-    const url = "https://api.themoviedb.org/3/movie/now_playing?api_key=434f47eb1b2d5c6b864a3d2591bf1b1d"
+    const url = "https://api.themoviedb.org/3/movie/now_playing?api_key=434f47eb1b2d5c6b864a3d2591bf1b1d&language=es-ES"
     const options = {
         method: 'GET',
         headers: {
@@ -15,7 +15,7 @@ export async function FetchMovies() {
 }
 
 export async function FetchGenres(){
-    const url2 = "https://api.themoviedb.org/3/genre/movie/list?api_key=434f47eb1b2d5c6b864a3d2591bf1b1d"
+    const url2 = "https://api.themoviedb.org/3/genre/movie/list?api_key=434f47eb1b2d5c6b864a3d2591bf1b1d&language=es-ES"
     const options2 = {
         method: 'GET',
         headers: {
@@ -51,7 +51,7 @@ export async function FetchCast(movieId){
 }
 
 export async function FetchUpcomingMovie(){
-  const url4 = "https://api.themoviedb.org/3/movie/upcoming?api_key=434f47eb1b2d5c6b864a3d2591bf1b1d"
+  const url4 = "https://api.themoviedb.org/3/movie/upcoming?api_key=434f47eb1b2d5c6b864a3d2591bf1b1d&language=es-ES"
   const options4 = {
     method: 'GET',
     headers: {
