@@ -90,8 +90,8 @@ export function ReservarPage() {
         } 
 
         const addReserve = async () => {
-            console.log(user.id, movie);
             await SaveReserve(user.id, movie);
+            console.log(user);
         };
 
         const displayData = (event) => {
@@ -100,7 +100,7 @@ export function ReservarPage() {
                 setStyle2(styles.hidden);
                 setStyle3(styles.container);
                 
-                addReserve;
+                addReserve();
             } else {window.alert("Selecciona todos tus asientos");}
         }
 
