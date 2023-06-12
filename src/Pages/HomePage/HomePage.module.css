@@ -1,6 +1,7 @@
 .container{
     background-color: #12001E;
     display: flex;
+    position: relative;
     flex-direction: column;
     gap: 10px
 }
@@ -22,3 +23,30 @@
     line-height: 38px;
     color: #FFFFFF
 }
+
+.searchContainer {
+   
+    margin-left: 5%;
+    align-content: center;
+
+
+}
+.hidden{
+    display: none;
+}
+
+.searchContainer form {
+    width: 100%;
+}
+  
+.searchContainer input[type=text] {
+
+    padding: 5px;
+    margin-top: 0px;
+    font-size: 17px;
+    border: none;
+   
+    
+    
+  }
+

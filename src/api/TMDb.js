@@ -61,5 +61,17 @@ export async function FetchUpcomingMovie(){
   };
   return axios.get(url4, options4)
 }
-    
+
+export async function FetchSearch(valor_input){
+  const url5 = `https://api.themoviedb.org/3/search/movie?query=${valor_input}&include_adult=false&language=es-ES`
+  const options5 = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MzRmNDdlYjFiMmQ1YzZiODY0YTNkMjU5MWJmMWIxZCIsInN1YiI6IjY0ODNmODRhZTM3NWMwMDBlMjRmMDMwMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.iCcgQOMRqU4nhAiM3zFYXp9PNXOnOXG1AQfUaV5uUS8'
+    }
+  };
+  return axios.get(url5, options5)
+}
+  
 

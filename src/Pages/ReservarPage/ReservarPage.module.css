@@ -35,6 +35,16 @@ body{
     color: #4C0B75;
 }
 
+.container .title{
+    text-align: center;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 25px;
+    line-height: 38px;
+    color: #f2f2f2;
+}
+
 .container .form .subtitle{
     text-align: center;
     font-family: 'Montserrat';
@@ -159,6 +169,11 @@ table {
 
 
 }
+.asiento.selected {
+    background: url('src/assets/Logo/asiento2.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
 
 .asiento:hover{
     background: url('src/assets/Logo/asiento2.png');
@@ -183,7 +198,7 @@ table {
     
 }
 
-.hide {
+.hidden {
     display: none;
   }
 
@@ -197,6 +212,7 @@ table {
     width: 70%;
     height: auto;
     margin:auto;
+    margin-top: 20%;
     overflow: hidden;
     
 }

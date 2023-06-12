@@ -2,34 +2,72 @@ import React, {useEffect} from 'react'
 import styles from './ReservarPage.module.css'
 import { useMovies } from '../../hookes/useMovies'
 import { Link, useParams } from 'react-router-dom'
+import { useState } from 'react'
 
 export function ReservarPage() {
+    let selectCount=0;
+
+    const asientos = [];
+    const [tickets, setTickets] = useState(0);
+    const [style, setStyle] = useState(styles.wrapper);
+    const [style2, setStyle2] = useState(styles.hidden);
+    
+    const handleClick = (event, tickets) => {
+        
+
+        
+
+            if (event.currentTarget.classList.contains(`${styles.asiento}`) && !event.currentTarget.classList.contains(`${styles.occupied}`) && !event.currentTarget.classList.contains(`${styles.selected}`)) {
+            if (selectCount < tickets) {
+                event.currentTarget.classList.toggle(`${styles.selected}`);
+            selectCount += 1;
+            console.log(selectCount)
+            } else {window.alert("Ha alcanzado el máximo de asientos");}
+            }
+
+            else if (event.currentTarget.classList.contains(`${styles.asiento}`)  && !event.currentTarget.classList.contains(`${styles.occupied}`) && event.currentTarget.classList.contains(`${styles.selected}`)) {
+                event.currentTarget.classList.remove(`${styles.selected}`);
+                selectCount -= 1;
+                console.log(selectCount)
+            }
+        
+      };
+
+      const onChange = (event) => {
+        setTickets(event.target.value);
+      }
+
+      const onSubmit = (event) => {
+        setStyle(styles.hidden);
+        setStyle2(styles.container)
+      }
+
+    for (let i = 0; i < 20; i++) {
+        asientos.push(<div className={styles.asiento} id={i} onClick={(event)=>handleClick(event,tickets)} ></div>);
+    }
+    
 
     const {movieId} = useParams();
-    const { movie, getSingleMovie, cast, getCast } = useMovies();
+    const { movie, getSingleMovie} = useMovies();
+    
 
     useEffect(() => {
         getSingleMovie(movieId);
         
       }, [])
     
-      useEffect(()=>{
-        getCast(movieId)
-      }, [])
-    
-      console.log(cast)
     
       console.log(movie);
-      const {title, spoken_languages, overview, poster_path, runtime } = movie || {};
-      let languages = [];
+      const {title, poster_path } = movie || {};
+  
 
   return (
    
     <div className={styles.container}>
-       <div className={styles.wrapper}>
+       <div className={style}>
 
     
-        <form className={styles.form}>
+        <form id="form-reserva" className={styles.form}>
 
             
             
@@ -73,16 +111,19 @@ export function ReservarPage() {
                 </label>
                 <table>
                     <tr>
-                    <th><input type="tickets" name="id" id="tickets" placeholder="Ej. 1"/></th>
-                    <th><button type="submit" className={styles.confirmar} >OK</button></th>
+                    <th><input type="numTickets" name="numTickets" id="numTickets" placeholder="Ej. 1" onChange={onChange}/></th>
+                    <th><button type="button" id="ok-button" className={styles.confirmar} onClick={onSubmit}>OK</button></th>
                     </tr>
                 </table>
             </div>
 
         </form>
         </div>
-        <p className={styles.subtitle2}>Asientos disponibles</p>
-        <div className={styles.wrapper2}>
+
+        <div className={style2}>
+            <br></br>
+        <p className={styles.title}>Asientos disponibles</p>
+        <div id="asientos-container" className={styles.wrapper2}>
             <table>
                     <tr>
                     <th><p className={styles.subtitle2}>1</p></th>
@@ -93,39 +134,22 @@ export function ReservarPage() {
             </table>
             
             
-            <div className={styles.gridAsientos}>
-            
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            <div className={styles.asiento}></div>
-            
+            <div className={styles.gridAsientos} >
+
+
+                {asientos}    
             
 
             </div>
 
-        </div>
-       
-            {/* BUTTONS */}
-            <button type="submit" className={styles.ingresar}>
-                Continuar
-            </button>
+            </div>
+        
+                {/* BUTTONS */}
+                <button type="submit" form="form-reserva" className={styles.ingresar}>
+                    Continuar
+                </button>
+                {/* <script src="script.js"></script> */}
+            </div>
     </div>
 
   )
