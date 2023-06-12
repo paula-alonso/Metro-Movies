@@ -7,7 +7,7 @@
     align-items: center;
 }
 
-.container .form{
+.form{
 
     padding: 10%;
     display: flex;
@@ -96,6 +96,20 @@ input{
     justify-content: center;
 }
 
+@media screen and (min-width:767px) and (max-width:1023px){
+    .form{
+        row-gap: 25px;
+        padding: 0;
+        width: 70%;
+    }
+}
 
+@media screen and (min-width:1024px){
+    .form{
 
+        row-gap: 20px;
+        padding: 3.5%;
+        width: 40%;
+    }
+}
 

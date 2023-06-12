@@ -9,11 +9,12 @@ export function Layout() {
         <UserContextProvider>
 
         <Navbar/>
-        <Footer/>
+        
 
         <section className="body">
             <Outlet/>
         </section>
+        <Footer/>
         </UserContextProvider>
 
       </main>
