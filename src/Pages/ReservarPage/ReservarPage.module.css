@@ -169,6 +169,23 @@ table {
 
 
 }
+
+
+.asientoSelected{
+    
+    background-color: #DAB6FC;
+    width:70%;
+    height: 4.25em;
+    cursor: pointer;
+    background: url('src/assets/Logo/asiento2.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+
+
+}
+
+
 .asiento.selected {
     background: url('src/assets/Logo/asiento2.png');
     background-repeat: no-repeat;
@@ -193,6 +210,7 @@ table {
     height: auto;
     margin:auto;
     margin-top: 15%;
+    margin-bottom: 5%;
     overflow: hidden;
     display: flex;
     
@@ -212,7 +230,7 @@ table {
     width: 70%;
     height: auto;
     margin:auto;
-    margin-top: 20%;
+   
     overflow: hidden;
     
 }

@@ -51,8 +51,8 @@ export function HomePage() {
         'https://www.unimet.edu.ve/wp-content/uploads/2020/04/PHOTO-2020-04-16-15-10-57.jpg',
         'https://www.unimet.edu.ve/wp-content/uploads/2019/11/bannerdade-1200x630.jpg',
         'https://www.unimet.edu.ve/wp-content/uploads/2020/10/Campus-galer%C3%ADa-52.jpg',
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF7zRCZaSn-k48Yxf79kQeZVAvOv7aqK2IRQ&usqp=CAU',
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQz-aO44VDSsOqX0WF__pF1ZUSy79h3bsqCg&usqp=CAU'
+        'https://www.unimet.edu.ve/wp-content/uploads/2020/10/Campus-galer%C3%ADa-29.jpg',
+        'https://www.unimet.edu.ve/unimetsite/wp-content/uploads/2014/05/IMG_0389.jpg'
 
     
     ];
