@@ -2,7 +2,9 @@ import React, {useEffect} from 'react'
 import styles from './ReservarPage.module.css'
 import { useMovies } from '../../hookes/useMovies'
 import { Link, UNSAFE_DataRouterStateContext, useParams, useNavigate} from 'react-router-dom'
+import { SaveReserve } from '../../firebase/users-servise'
 import { useState } from 'react'
+import { useUser } from '../../contexts/UserContext'
 
 export function ReservarPage() {
     let selectCount=0;
@@ -11,6 +13,7 @@ export function ReservarPage() {
     const [total, setTotal] = useState(0);
     
     const navigate = useNavigate();
+    const {user} = useUser();
 
     const asientos = [];
     const [tickets, setTickets] = useState(0);
@@ -74,24 +77,32 @@ export function ReservarPage() {
       const onSubmit = () => {
         console.log(tickets);
         if (formData.name != '' && formData.ci !='' && formData.email!='') {
-            if (tickets<=5) {
+            if (tickets<=5 && tickets>0) {
             let random = getPrecioRandom(1000,5000);
             setStyle(styles.hidden);
             setStyle2(styles.container);
             setPrecio(random);
             setTotal(tickets*random);
             
-            } else {window.alert("Selecciona menos de 5 tickets")}
+            } else {window.alert("Selecciona menos de 5 tickets");}
         }else {window.alert("Introduce todos tus datos");}
         console.log(precio,total, asientos);
         } 
 
+        const addReserve = async () => {
+            console.log(user.id, movie);
+            await SaveReserve(user.id, movie);
+        };
 
-      const displayData = (event) => {
-        setStyle2(styles.hidden);
-        setStyle3(styles.container);
-        console.log(selected);
-      }
+        const displayData = (event) => {
+
+            if (selected.length==tickets) {
+                setStyle2(styles.hidden);
+                setStyle3(styles.container);
+                
+                addReserve;
+            } else {window.alert("Selecciona todos tus asientos");}
+        }
 
     
     
@@ -203,14 +214,14 @@ export function ReservarPage() {
                     <h1 className={styles.title}> Detalles de la compra </h1>
                     <br></br>
                     <br></br>
-                    <p className={styles.subtitle}>Nombre y apellido:{formData.name}</p>
-                    <p className={styles.subtitle}>Cedula de identidad:{formData.ci}</p>
+                    <p className={styles.subtitle}>Nombre y apellido: {formData.name}</p>
+                    <p className={styles.subtitle}>Cedula de identidad: {formData.ci}</p>
                     
                     <br></br>
                     
-                    <p className={styles.subtitle}>Tickets:{tickets}</p>
-                    <p className={styles.subtitle}>Precio por ticket:{precio}</p>
-                    <p className={styles.subtitle}>Total:{total}</p>
+                    <p className={styles.subtitle}>Tickets: {tickets}</p>
+                    <p className={styles.subtitle}>Precio por ticket: {precio}</p>
+                    <p className={styles.subtitle}>Total: {total}</p>
                 </div>
                 <button className={styles.ingresar} onClick={()=>(navigate("/"))}>
                     Volver

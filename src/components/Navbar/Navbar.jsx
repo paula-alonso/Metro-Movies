@@ -19,7 +19,7 @@ export function Navbar() {
     return (
         <nav className={styles.navbar}>
             <div className={styles.navdiv}>
-            <div className={styles.logo}><img src='src/assets/Logo/logo.png' className={styles.logo}></img></div>
+            <div className={styles.logo}><img src='public/Logo/logo.png' className={styles.logo}></img></div>
             
             <ul className={styles.infoContainer}>
                 <li>

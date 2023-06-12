@@ -8,7 +8,15 @@ export async function UpdateFavorites(userId, data){
     return await updateDoc(ref, {
         favorites: arrayUnion(data)
     });
-        }
+}
+
+export async function SaveReserve(userId, data){
+    const ref = doc(db, "users", userId)
+    console.log(ref)
+    return await updateDoc(ref, {
+        reservas: arrayUnion(data)
+    });
+}
 
 export async function createUserProfile(userId, data){
     return setDoc(doc(db, "users", userId), data);

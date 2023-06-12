@@ -162,7 +162,7 @@ table {
     width:70%;
     height: 4.25em;
     cursor: pointer;
-    background: url('src/assets/Logo/asiento1.png');
+    background: url('public/Logo/asiento1.png');
     background-repeat: no-repeat;
     background-size: contain;
 
@@ -177,7 +177,7 @@ table {
     width:70%;
     height: 4.25em;
     cursor: pointer;
-    background: url('src/assets/Logo/asiento2.png');
+    background: url('public/Logo/asiento2.png');
     background-repeat: no-repeat;
     background-size: contain;
 
@@ -187,13 +187,13 @@ table {
 
 
 .asiento.selected {
-    background: url('src/assets/Logo/asiento2.png');
+    background: url('public/Logo/asiento2.png');
     background-repeat: no-repeat;
     background-size: contain;
   }
 
 .asiento:hover{
-    background: url('src/assets/Logo/asiento2.png');
+    background: url('public/Logo/asiento2.png');
     background-repeat: no-repeat;
     background-size: contain;
 }

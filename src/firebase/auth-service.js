@@ -11,6 +11,7 @@ export const singInWithGoogle = async () => {
             email,
             name,
             "favorites":[],
+            "reservas":[],
             "id": result.user.uid,
         })
     }catch(error){
@@ -37,6 +38,7 @@ export const registerEmail= async (email, password, extraData) => {
             email,
             ...extraData,
             "favorites":[],
+            "reservas":[],
             "id": result.user.uid,
         })
     } catch (error) {
