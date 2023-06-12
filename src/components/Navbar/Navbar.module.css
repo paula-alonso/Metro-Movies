@@ -77,3 +77,10 @@
 .profile{
   font-size: 12px;
 }
+
+@media screen and (min-width:1024px){
+  .navbar{
+    height: 7.6vh;
+  }  
+
+}
