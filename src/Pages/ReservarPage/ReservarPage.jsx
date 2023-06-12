@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import styles from './ReservarPage.module.css'
 import { useMovies } from '../../hookes/useMovies'
-import { Link, useParams } from 'react-router-dom'
+import { Link, UNSAFE_DataRouterStateContext, useParams } from 'react-router-dom'
 import { useState } from 'react'
 
 export function ReservarPage() {
@@ -11,6 +11,15 @@ export function ReservarPage() {
     const [tickets, setTickets] = useState(0);
     const [style, setStyle] = useState(styles.wrapper);
     const [style2, setStyle2] = useState(styles.hidden);
+    const [precio, setPrecio] = useState(0);
+    const [total, setTotal] = useState(0);
+
+    const getPrecioRandom =(min,max)=> {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        setPrecio(Math.floor(Math.random() * (max - min + 1) + min));
+    }
+
     
     const handleClick = (event, tickets) => {
         
@@ -37,9 +46,13 @@ export function ReservarPage() {
         setTickets(event.target.value);
       }
 
-      const onSubmit = (event) => {
+      const onSubmit = () => {
         setStyle(styles.hidden);
-        setStyle2(styles.container)
+        setStyle2(styles.container);
+        getPrecioRandom(1000,5000);
+        setTotal(precio*tickets);
+        console.log("A")
+        console.log(precio, total);
       }
 
     for (let i = 0; i < 20; i++) {
@@ -57,7 +70,6 @@ export function ReservarPage() {
       }, [])
     
     
-      console.log(movie);
       const {title, poster_path } = movie || {};
   
 
@@ -122,7 +134,10 @@ export function ReservarPage() {
 
         <div className={style2}>
             <br></br>
+            <br></br>
         <p className={styles.title}>Asientos disponibles</p>
+            <br></br>
+            <br></br>
         <div id="asientos-container" className={styles.wrapper2}>
             <table>
                     <tr>
