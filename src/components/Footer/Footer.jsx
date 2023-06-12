@@ -9,26 +9,12 @@ export function Footer() {
                
                     <div className={styles.column}>
                         <h4>Sobre nosotros</h4>
-                        <ul>
-                            <li className={styles.listFooter}><p>aaaaaaaaaaaaaaaaaaaaaaa</p></li>
-                            
-                        </ul>
+                        <p>metromovies@gmail.com</p>
                         
                     </div>
                     <div className={styles.column}>
-                        <h4>No sé acá</h4>
-                        <ul>
-                            <li className={styles.listFooter}><p>aaaaaaaaaaaaaaaaa</p></li>
-                            
-                        </ul>
-                        
-                    </div>
-                    <div className={styles.column}>
-                        <h4>Contacto</h4>
-                        <ul>
-                            <li className={styles.listFooter}><p>aaaaaaaaaaaaaaaaaa</p></li>
-                            
-                        </ul>
+                        <h4>Dirección</h4>
+                        <p>Av. Municipal con calle Carabobo, Centro Seguros La Previsora, Planta Baja.</p>
                         
                     </div>
                 

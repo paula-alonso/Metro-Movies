@@ -10,6 +10,7 @@ import { ProfilePage } from './Pages/ProfilePage/ProfilePage'
 import { AdminPage } from './Pages/AdminPage/AdminPage'
 import { HomePage } from './Pages/HomePage/HomePage'
 import { Layout } from './components/Layout/Layout'
+import { PrivateRoute } from './components/PrivateRoute/PrivateRoute'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -19,9 +20,17 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route element={<Layout/>}> 
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/signup" element={<SignupPage/>}/>
-        <Route path="/reservar/:movieId" element={<ReservarPage/>}/>
+        <Route path="/reservar/:movieId" element={
+          <PrivateRoute>
+            <ReservarPage/>
+          </PrivateRoute>
+        }/>
         <Route path="/details/:movieId" element={<MovieDetailsPage/>}/>
-        <Route path="/profile" element={<ProfilePage/>}/>
+        <Route path="/profile" element={
+          <PrivateRoute>
+            <ProfilePage/>
+          </PrivateRoute>
+        }/>
         <Route path='/admin' element={<AdminPage/>}/>
         <Route path='/' element={<HomePage/>}/>
       </Route>

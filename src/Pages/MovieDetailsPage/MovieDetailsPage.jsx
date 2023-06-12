@@ -85,7 +85,7 @@ export function MovieDetailsPage() {
                 esta = true;
                 }
               })}
-          {esta && (
+          {esta && user &&(
             <button className={styles.reserveButtom}>
             <Link to={`/reservar/${movieId}`}> Reservar </Link>
             </button>
@@ -95,11 +95,13 @@ export function MovieDetailsPage() {
             <h1 className={styles.title}> PROXIMAMENTE {movie.release_date}</h1>
           )
           }
-
-          <button className={styles.favorites} onClick={addFavorites}>
+          {user && (
+            <button className={styles.favorites} onClick={addFavorites}>
             <img className={styles.heart} src="https://cdn-icons-png.flaticon.com/512/2325/2325695.png" />
             <h1 className={styles.añadir}>Añadir a favoritos</h1>
           </button>
+          )}
+          
         </div>
         
       </div>
