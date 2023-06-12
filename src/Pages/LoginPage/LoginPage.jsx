@@ -36,7 +36,7 @@ export function LoginPage() {
   return (
     <div className={styles.container}>
         <form className={styles.form} onSubmit={onSubmit}>
-            <img src="src/assets/Logo/logo.png"/>
+            <img src="public/Logo/logo.png"/>
             <h1 className={styles.title}>Bienvenido a Metro Movies</h1>
             <p className={styles.subtitle}>
             ¡Bienvenido otra vez! introduce tus datos para iniciar sesión

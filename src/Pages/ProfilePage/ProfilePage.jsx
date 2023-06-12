@@ -12,24 +12,33 @@ export function ProfilePage() {
   const [refresh, setRefresh] = useState(0);
   
   const [favs, setFavs] = useState([])
+  const [revs, setRevs] = useState([])
   async function getFavorites(){
+
   if (user) {
 
       const docRef = doc(db, "users", user.id);
       const docSnap = await getDoc(docRef);
       
       let array = []
+      let array_rev = []
   
       if (docSnap.exists()) {
         console.log("Document data:", docSnap.data());
         if(docSnap){
             const user = docSnap.data();
             const favoritos = user.favorites;
+            const reservas = user.reservas;
             favoritos.map((movie)=>{
             array.push(movie)
-        })
+            })
+            reservas.map((movie)=>{
+            array_rev.push(movie)
+          })
           setFavs(array)
+          setRevs(array_rev)
         }
+        
         
       } else {
         // docSnap.data() will be undefined in this case
@@ -42,6 +51,9 @@ export function ProfilePage() {
   useEffect(()=>{
     getFavorites();
   }, [refresh])
+
+ 
+  
  
   
   
@@ -60,10 +72,14 @@ export function ProfilePage() {
             }
         </div>
 
-        {/*<div className={styles.reserveContainer}>
+        <div className={styles.reserveContainer}>
             <h1 className={styles.title2}>Tus reservaciones</h1>
-            <ReserveCard/>
-        </div>*/}
+            {
+              revs.map((movie)=>{
+                return <ReserveCard movie={movie} matches={matches} />
+              })
+            }
+        </div>
     </div>
   )
 }
