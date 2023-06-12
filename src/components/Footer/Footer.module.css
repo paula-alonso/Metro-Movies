@@ -4,42 +4,28 @@
 .footer {
 
   background-color: #440070;
-
-  bottom: 0px;
   width: 100%;
-  z-index: 1;
-  align-items: center;
-  justify-content:space-evenly;
+  display: flex;
+  justify-content: space-between;
+  height: fit-content;
 
-  display: grid;
-  grid-template-columns: repeat(3,auto);
   
 
   }
 
-  .listFooter, p{
-    list-style: none;
+  .column{
+    padding: 20px;
     color: #f2f2f2;
-    font-family: 'Raleway';
+    font-family: 'Montserrat';
     font-style: normal;
     text-decoration: none;
-    font-size: 12px;
-    margin:auto;
-    padding-left: 5%;
-    padding-right: 25%;
-    word-wrap: break-word;
+    font-size: 10px;
     text-align: justify;
+    width: 40%;
   }
 
-  h4{
-    padding: 5%;
-    color: #f2f2f2;
-    font-family: 'Raleway';
-    font-style: normal;
-    font-size: 15px;
-    text-decoration: none;
-  
-  }
+
+ 
 
   
 
