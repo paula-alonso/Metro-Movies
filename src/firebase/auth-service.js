@@ -5,12 +5,13 @@ import { createUserProfile } from "./users-servise";
 export const singInWithGoogle = async () => {
     try{
         const result = await signInWithPopup(auth, googleProvider)
-        console.log(result)
         const email = result.user.email
         const name = result.user.displayName
         await createUserProfile(result.user.uid, {
             email,
             name,
+            "favorites":[],
+            "id": result.user.uid,
         })
     }catch(error){
         console.error(error)
@@ -25,6 +26,8 @@ export const registerEmail= async (email, password, extraData) => {
         await createUserProfile(result.user.uid, {
             email,
             ...extraData,
+            "favorites":[],
+            "id": result.user.uid,
         })
     } catch (error) {
         console.log(error)

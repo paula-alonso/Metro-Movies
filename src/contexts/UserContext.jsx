@@ -9,6 +9,7 @@ export const UserContext = createContext(null)
 export function UserContextProvider({children}){
 
     const [user, setUser] = useState(null);
+    const [favs, setfavs] = useState();
 
     useEffect(() => {
         onAuthStateChanged(auth, async (firebaseUser)=>{
@@ -16,15 +17,17 @@ export function UserContextProvider({children}){
             if(firebaseUser){
                 const profile = await getUserProfile(firebaseUser.email)
                 setUser(profile)
+                setfavs(profile.favorites)
             }else{
                 setUser(null)
+                setfavs(null)
             }
         });
     }, []);
 
     return(
         <UserContext.Provider value={{
-            user,
+            user, favs,
             }}>
             {children}
         </UserContext.Provider>

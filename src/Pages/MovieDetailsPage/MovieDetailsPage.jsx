@@ -3,12 +3,20 @@ import styles from './MovieDetailsPage.module.css'
 import { Card } from '../../components/Card/Card'
 import { useMovies } from '../../hookes/useMovies'
 import { Link, useParams } from 'react-router-dom'
+import { useUser } from '../../contexts/UserContext'
+import { UpdateFavorites } from '../../firebase/users-servise'
 
 export function MovieDetailsPage() {
 
   const {movieId} = useParams();
-  const { movie, getSingleMovie, cast, getCast } = useMovies();
- 
+  const { movie, getSingleMovie, cast, getCast, movies, getMovies, isLoading } = useMovies();
+  const {user} = useUser();
+  
+  
+  useEffect(() => {
+    getMovies();
+    
+  }, [])
 
   useEffect(() => {
     getSingleMovie(movieId);
@@ -19,10 +27,16 @@ export function MovieDetailsPage() {
     getCast(movieId)
   }, [])
 
+
   console.log(cast)
 
-  console.log(movie);
-  const {title, spoken_languages, overview, poster_path, runtime } = movie || {};
+  const addFavorites = async () => {
+    await UpdateFavorites(user.id, movie)
+  };
+  let esta = false;
+
+ 
+  const {title, spoken_languages, overview, poster_path, runtime, release_date } = movie || {};
   let languages = [];
   try{
    
@@ -38,7 +52,12 @@ export function MovieDetailsPage() {
   return (
 
     <div className={styles.container}>
-      <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} className={styles.hero}/>
+      {
+        isLoading?(
+          <p>Cargando...</p>
+        ):(
+          <>
+          <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} className={styles.hero}/>
 
       <div className={styles.peliContainer}>
         <h1 className={styles.title}>{title}</h1>
@@ -61,17 +80,33 @@ export function MovieDetailsPage() {
         </div>
           
         <div className={styles.buttoms}>
-          <button className={styles.reserveButtom}>
-          <Link to={`/reservar/${movieId}`}> Reservar </Link>
-          </button>
+            {movies.map((moviep)=>{
+              if(moviep.id == movie.id){
+                esta = true;
+                }
+              })}
+          {esta && (
+            <button className={styles.reserveButtom}>
+            <Link to={`/reservar/${movieId}`}> Reservar </Link>
+            </button>
+          )}
 
-          <button className={styles.favorites}>
-            <img className={styles.heart} src="https://cdn-icons-png.flaticon.com/512/2325/2325695.png"/>
+          {!esta && (
+            <h1 className={styles.title}> PROXIMAMENTE {movie.release_date}</h1>
+          )
+          }
+
+          <button className={styles.favorites} onClick={addFavorites}>
+            <img className={styles.heart} src="https://cdn-icons-png.flaticon.com/512/2325/2325695.png" />
             <h1 className={styles.añadir}>Añadir a favoritos</h1>
           </button>
         </div>
         
       </div>
+      </>
+        )
+      }
+      
               
     </div>
   )

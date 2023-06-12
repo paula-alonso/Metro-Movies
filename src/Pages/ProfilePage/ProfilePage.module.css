@@ -8,12 +8,16 @@
 .moviesContainer{
     height: fit-content;
     padding: 35px;
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
     gap: 5%;
     background: #12001E;
 }
 
 .title1{
+    margin-top: 5%;
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 700;
@@ -21,6 +25,7 @@
     line-height: 38px;
     text-align: center;
     color: #FFFFFF;
+    background-color:  #12001E;
 }
 
 .reserveContainer{
