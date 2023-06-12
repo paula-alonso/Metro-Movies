@@ -9,12 +9,13 @@ export function ReservarPage() {
 
     const asientos = [];
     const [tickets, setTickets] = useState(0);
-    const [confirmed, setConfirmed] = useState(false);
+    const [style, setStyle] = useState(styles.wrapper);
+    const [style2, setStyle2] = useState(styles.hidden);
     
     const handleClick = (event, tickets) => {
         
 
-        if (confirmed = true) {
+        
 
             if (event.currentTarget.classList.contains(`${styles.asiento}`) && !event.currentTarget.classList.contains(`${styles.occupied}`) && !event.currentTarget.classList.contains(`${styles.selected}`)) {
             if (selectCount < tickets) {
@@ -29,31 +30,22 @@ export function ReservarPage() {
                 selectCount -= 1;
                 console.log(selectCount)
             }
-        }
+        
       };
 
       const onChange = (event) => {
         setTickets(event.target.value);
       }
 
+      const onSubmit = (event) => {
+        setStyle(styles.hidden);
+        setStyle2(styles.container)
+      }
+
     for (let i = 0; i < 20; i++) {
         asientos.push(<div className={styles.asiento} id={i} onClick={(event)=>handleClick(event,tickets)} ></div>);
     }
     
-      const confirmClick = (a,event) => {
-       event.a.classList.remove(`${styles.hide}`);
-
-      };
-
-      const continueClick = event => {
-        if (event.currentTarget.classList.contains(`${styles.asiento}`) && !event.currentTarget.classList.contains(`${styles.occupied}`)) {
-          event.currentTarget.classList.toggle(`${styles.selected}`);
-        }
-
-        if (event.currentTarget.classList.contains(`${styles.asiento}`) && !event.currentTarget.classList.contains(`${styles.selected}`)) {
-            event.currentTarget.classList.remove(`${styles.selected}`);
-          }
-      };
 
     const {movieId} = useParams();
     const { movie, getSingleMovie} = useMovies();
@@ -72,10 +64,10 @@ export function ReservarPage() {
   return (
    
     <div className={styles.container}>
-       <div className={styles.wrapper}>
+       <div className={style}>
 
     
-        <form className={styles.form}>
+        <form id="form-reserva" className={styles.form}>
 
             
             
@@ -120,14 +112,17 @@ export function ReservarPage() {
                 <table>
                     <tr>
                     <th><input type="numTickets" name="numTickets" id="numTickets" placeholder="Ej. 1" onChange={onChange}/></th>
-                    <th><button id="ok-button" className={styles.confirmar} onSubmit={()=>(this.readOnly(true))}>OK</button></th>
+                    <th><button type="button" id="ok-button" className={styles.confirmar} onClick={onSubmit}>OK</button></th>
                     </tr>
                 </table>
             </div>
 
         </form>
         </div>
-        <p className={styles.subtitle2}>Asientos disponibles</p>
+
+        <div className={style2}>
+            <br></br>
+        <p className={styles.title}>Asientos disponibles</p>
         <div id="asientos-container" className={styles.wrapper2}>
             <table>
                     <tr>
@@ -143,19 +138,18 @@ export function ReservarPage() {
 
 
                 {asientos}    
-             
-            
             
 
             </div>
 
-        </div>
-       
-            {/* BUTTONS */}
-            <button type="submit" className={styles.ingresar}>
-                Continuar
-            </button>
-            {/* <script src="script.js"></script> */}
+            </div>
+        
+                {/* BUTTONS */}
+                <button type="submit" form="form-reserva" className={styles.ingresar}>
+                    Continuar
+                </button>
+                {/* <script src="script.js"></script> */}
+            </div>
     </div>
 
   )
