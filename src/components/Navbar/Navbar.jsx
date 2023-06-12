@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styles from './Navbar.module.css'
 import { useUser } from '../../contexts/UserContext'
 import { logOut } from '../../firebase/auth-service';
@@ -7,11 +7,13 @@ import { logOut } from '../../firebase/auth-service';
 export function Navbar() {
 
     const {user} = useUser();
+    const navigate = useNavigate();
     console.log(user)
 
     const handleLogout = async () => {
         console.log("saliendo...")
         await logOut();
+        navigate("/")
     }
 
     return (

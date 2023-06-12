@@ -20,23 +20,30 @@ export function useMovies() {
     } 
 
     const getUpcomingMovies = async() => {
+        setLoading(true)
         const {data} = await FetchUpcomingMovie();
         setUpMovie(data.results);
     }
 
     const getGenres = async() => {
+        setLoading(true)
         const {data} = await FetchGenres();
         setGenres(data.genres)
+        setLoading(false)
     }
 
     const getSingleMovie = async (movieId)=>{
+        setLoading(true)
         const {data} = await FetchMovie(movieId)
         setMovie(data);
+        setLoading(false)
     }
 
     const getCast = async (movieId) =>{
+        setLoading(true)
         const {data} = await FetchCast(movieId)
         setCast(data.cast)
+        setLoading(false)
     }
 
     const getSearch = async (valor_input) =>{

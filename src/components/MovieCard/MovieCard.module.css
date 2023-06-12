@@ -28,6 +28,7 @@
 
 
 .movieInfo{
+    padding: 0;
     margin-top: 4%;
     word-wrap: break-word;
     font-family: 'Montserrat';
