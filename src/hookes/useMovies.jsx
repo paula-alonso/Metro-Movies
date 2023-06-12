@@ -1,4 +1,4 @@
-import { FetchMovies, FetchGenres, FetchMovie, FetchCast, FetchUpcomingMovie } from "../api/TMDb";
+import { FetchMovies, FetchGenres, FetchMovie, FetchCast, FetchUpcomingMovie, FetchSearch } from "../api/TMDb";
 import { useEffect, useState } from "react";
 
 export function useMovies() {
@@ -9,6 +9,7 @@ export function useMovies() {
     const [cast, setCast] = useState([]);
     const [upmovies, setUpMovie] = useState([]);
     const [isLoading, setLoading]=useState(false); 
+    const [search, setSearch] = useState([]);
 
     
     const getMovies = async() => {
@@ -37,9 +38,16 @@ export function useMovies() {
         const {data} = await FetchCast(movieId)
         setCast(data.cast)
     }
+
+    const getSearch = async (valor_input) =>{
+        const {data} = await FetchSearch(valor_input);
+        setSearch(data.results);
+    }
+
+
     
     return{
-        movies, genres, movie, cast, getMovies, getGenres, getSingleMovie, getCast, upmovies, getUpcomingMovies, isLoading
+        movies, genres, movie, cast, getMovies, getGenres, getSingleMovie, getCast, upmovies, getUpcomingMovies, isLoading, getSearch, search
     }
      
 }

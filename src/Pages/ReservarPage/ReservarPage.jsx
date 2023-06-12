@@ -2,32 +2,42 @@ import React, {useEffect} from 'react'
 import styles from './ReservarPage.module.css'
 import { useMovies } from '../../hookes/useMovies'
 import { Link, useParams } from 'react-router-dom'
+import { useState } from 'react'
 
 export function ReservarPage() {
     let selectCount=0;
 
     const asientos = [];
-
-    const handleClick = (event) => {
+    const [tickets, setTickets] = useState(0);
+    const [confirmed, setConfirmed] = useState(false);
+    
+    const handleClick = (event, tickets) => {
         
 
-        if (event.currentTarget.classList.contains(`${styles.asiento}`) && !event.currentTarget.classList.contains(`${styles.occupied}`) && !event.currentTarget.classList.contains(`${styles.selected}`)) {
-          if (selectCount < 5) {
-            event.currentTarget.classList.toggle(`${styles.selected}`);
-          selectCount += 1;
-          console.log(selectCount)
-          } else {window.alert("Ha alcanzado el máximo de asientos");}
-        }
+        if (confirmed = true) {
 
-        else if (event.currentTarget.classList.contains(`${styles.asiento}`)  && !event.currentTarget.classList.contains(`${styles.occupied}`) && event.currentTarget.classList.contains(`${styles.selected}`)) {
-            event.currentTarget.classList.remove(`${styles.selected}`);
-            selectCount -= 1;
+            if (event.currentTarget.classList.contains(`${styles.asiento}`) && !event.currentTarget.classList.contains(`${styles.occupied}`) && !event.currentTarget.classList.contains(`${styles.selected}`)) {
+            if (selectCount < tickets) {
+                event.currentTarget.classList.toggle(`${styles.selected}`);
+            selectCount += 1;
             console.log(selectCount)
-          }
+            } else {window.alert("Ha alcanzado el máximo de asientos");}
+            }
+
+            else if (event.currentTarget.classList.contains(`${styles.asiento}`)  && !event.currentTarget.classList.contains(`${styles.occupied}`) && event.currentTarget.classList.contains(`${styles.selected}`)) {
+                event.currentTarget.classList.remove(`${styles.selected}`);
+                selectCount -= 1;
+                console.log(selectCount)
+            }
+        }
       };
 
-      for (let i = 0; i < 20; i++) {
-        asientos.push(<div className={styles.asiento} id={i} onClick={handleClick} ></div>);
+      const onChange = (event) => {
+        setTickets(event.target.value);
+      }
+
+    for (let i = 0; i < 20; i++) {
+        asientos.push(<div className={styles.asiento} id={i} onClick={(event)=>handleClick(event,tickets)} ></div>);
     }
     
       const confirmClick = (a,event) => {
@@ -46,7 +56,7 @@ export function ReservarPage() {
       };
 
     const {movieId} = useParams();
-    const { movie, getSingleMovie, cast, getCast } = useMovies();
+    const { movie, getSingleMovie} = useMovies();
     
 
     useEffect(() => {
@@ -54,15 +64,10 @@ export function ReservarPage() {
         
       }, [])
     
-      useEffect(()=>{
-        getCast(movieId)
-      }, [])
-    
-      console.log(cast)
     
       console.log(movie);
-      const {title, spoken_languages, overview, poster_path, runtime } = movie || {};
-      let languages = [];
+      const {title, poster_path } = movie || {};
+  
 
   return (
    
@@ -114,8 +119,8 @@ export function ReservarPage() {
                 </label>
                 <table>
                     <tr>
-                    <th><input type="tickets" name="tickets" id="tickets" placeholder="Ej. 1"/></th>
-                    <th><button id="ok-button" type="submit" className={styles.confirmar} >OK</button></th>
+                    <th><input type="numTickets" name="numTickets" id="numTickets" placeholder="Ej. 1" onChange={onChange}/></th>
+                    <th><button id="ok-button" className={styles.confirmar} onSubmit={()=>(this.readOnly(true))}>OK</button></th>
                     </tr>
                 </table>
             </div>

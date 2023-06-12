@@ -17,6 +17,17 @@ export const singInWithGoogle = async () => {
     }
 };
 
+export const loginWithEmailAndPassword = async () => {
+
+    try{
+
+        const result = await signInWithEmailAndPassword(auth,email,password);
+        console.log("LOGIN", result);
+    } catch (error) {
+        console.log(error)
+    }
+};
+
 
 export const registerEmail= async (email, password, extraData) => {
     try {
