@@ -32,11 +32,12 @@ export function ProfilePage() {
             favoritos.map((movie)=>{
             array.push(movie)
             })
-            reservas.map((movie)=>{
-            array_rev.push(movie)
+            reservas.map((reserve)=>{
+            array_rev.push(reserve)
           })
           setFavs(array)
           setRevs(array_rev)
+          console.log(array_rev)
         }
         
         
@@ -75,8 +76,8 @@ export function ProfilePage() {
         <div className={styles.reserveContainer}>
             <h1 className={styles.title2}>Tus reservaciones</h1>
             {
-              revs.map((movie)=>{
-                return <ReserveCard movie={movie} matches={matches} />
+              revs.map((reserve)=>{
+                return <ReserveCard reserve={reserve} />
               })
             }
         </div>

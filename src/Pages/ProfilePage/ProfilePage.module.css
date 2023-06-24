@@ -1,8 +1,9 @@
 
 .container{
 
-    height: 100vh;
-    background-color: #E2CBF8 ;
+    min-height: 100vh;
+    background-color: #12001E;
+    overflow: hidden;
 }
 
 .moviesContainer{
@@ -32,6 +33,8 @@
     padding: 35px;
     display: grid;
     gap: 5%;
+    background-color: #E2CBF8;
+    position: relative;
 }
 
 .title2{

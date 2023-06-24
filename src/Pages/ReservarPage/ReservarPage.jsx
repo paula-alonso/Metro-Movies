@@ -8,7 +8,7 @@ import { useUser } from '../../contexts/UserContext'
 
 export function ReservarPage() {
     let selectCount=0;
-    let selected=[];
+    let [selected, setSelected] = useState([]);
     const [precio, setPrecio] = useState(0);
     const [total, setTotal] = useState(0);
     
@@ -90,7 +90,14 @@ export function ReservarPage() {
         } 
 
         const addReserve = async () => {
-            await SaveReserve(user.id, movie);
+
+            const reserve = {
+                movie_title: title,
+                poster: poster_path,
+                tickets: tickets,
+                monto: total
+            }
+            await SaveReserve(user.id, reserve);
             console.log(user);
         };
 
